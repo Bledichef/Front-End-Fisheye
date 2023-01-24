@@ -1,7 +1,7 @@
 function photographerFactory(data) {
   const { name, portrait, city, country, price, tagline, id } = data;
 
-  const picture = `assets/photographers/${portrait}`;
+  const picture = `assets/photographers/Photographers/${portrait}`;
 
   function getUserCardDOM() {
     //création du a dans balise section avec href de base
@@ -51,4 +51,73 @@ function photographerFactory(data) {
     }
   }
   return { name, picture, city, country, price, tagline, getUserCardDOM };
+}
+
+/*
+factory pour créer les balises de la galerie et injecter les éléments
+*/
+function displayPictureVideoFactory(item) {
+  //création et injection de toutes les balises communes aux vidéos et img
+  const photographGalery = document.querySelector(".photograph-galery");
+
+  const tagArticle = document.createElement("article");
+  photographGalery.appendChild(tagArticle);
+
+  const divContainerTitleLike = document.createElement("div");
+  tagArticle.appendChild(divContainerTitleLike);
+  divContainerTitleLike.className = "container-title-like";
+
+  const tagTitle = document.createElement("p");
+  divContainerTitleLike.appendChild(tagTitle);
+  tagTitle.className = "title";
+
+  tagTitle.innerHTML = item.title;
+  tagTitle.setAttribute("tabindex", "0");
+
+  const divContainerLike = document.createElement("div");
+  divContainerTitleLike.appendChild(divContainerLike);
+  divContainerLike.className = "container-like";
+
+  const tagLikes = document.createElement("span");
+  divContainerLike.appendChild(tagLikes);
+  tagLikes.innerHTML = item.likes;
+  // donne l'id = id à la balise du chiffre des likes
+  tagLikes.id = `${item.id}`;
+  tagLikes.setAttribute("tabindex", "0");
+
+  const like = document.createElement("i");
+  divContainerLike.appendChild(like);
+  like.className = "fas fa-heart";
+  like.setAttribute("aria-label", `you like ${item.title}`);
+  // donne l'id = like-id à la balise du coeur
+  like.id = `like-${item.id}`;
+  like.setAttribute("tabindex", "0");
+
+  /*
+	fonction qui créé une balise img + chemin dans src
+	*/
+  function createPicture(item) {
+    const tagImg = document.createElement("img");
+    tagArticle.prepend(tagImg); //après l'élément
+    tagImg.src = `assets/photographers/${item.photographerId}/${item.image}`;
+    tagImg.className = "media";
+    tagImg.alt = item.alt;
+    tagImg.setAttribute("tabindex", "0");
+    tagImg.setAttribute("aria-label", `${item.title + " close up view"}`);
+    tagImg.dataset.title = item.title;
+  }
+  /*
+	fonction qui créé une balise img + chemin dans src
+	*/
+  function createVideo(item) {
+    const tagVideo = document.createElement("video");
+    tagArticle.prepend(tagVideo); //après l'élémenet
+    tagVideo.src = `assets/photographers/${item.photographerId}/${item.video}`;
+    tagVideo.className = "media";
+    tagVideo.setAttribute("alt", item.alt);
+    tagVideo.setAttribute("tabindex", "0");
+    tagVideo.setAttribute("aria-label", `${item.title + " close up view"}`);
+    tagVideo.dataset.title = item.title;
+  }
+  return { createVideo, createPicture };
 }
