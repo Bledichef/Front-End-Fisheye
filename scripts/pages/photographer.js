@@ -282,7 +282,7 @@ class Lightbox {
 		domLightbox.innerHTML = 
 			`<button type="button" aria-label="Close dialog" class="lightbox-close"><i class="fa-solid fa-xmark"></i></button>
 			<button type="button" aria-label="Next image" class="lightbox-next"><i class="fa-sharp fa-solid fa-chevron-right"></i></button>
-			<button type="button" aria-label="Previous image" class="lightbox-prev"><i class="fa-sharp fa-solid fa-chevron-left"></button>
+			<button type="button" aria-label="Previous image" class="lightbox-prev"><i class="fa-sharp fa-solid fa-chevron-left"></i></button>
 			<div class="media-container" aria-label="media open view"></div>
 			`;
 

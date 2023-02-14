@@ -136,7 +136,7 @@ form input {
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
+           
             transition: opacity 300ms;
             background-color: white;
         }
@@ -165,7 +165,9 @@ form input {
             margin-top: -14px;
             z-index: 11;         
             cursor: pointer;
+            background-color: white;
         }
+
         .lightbox .lightbox-close {
             margin-right: 1.5%;
             border: none;        
@@ -176,7 +178,9 @@ form input {
             right: 7px;        
             cursor: pointer;
             z-index: 12;
+            background-color: white;
         }
+
             .lightbox .lightbox-prev {
                 right: auto;
                 left: 0; 
@@ -194,3 +198,4 @@ form input {
                 bottom: 0;
                 right: 57px;
             }
+    
