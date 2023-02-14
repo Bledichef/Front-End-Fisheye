@@ -4,7 +4,7 @@ const urlPhotographer = window.location.search;
 const urlSearchParams = new URLSearchParams(urlPhotographer);
 const idPhotographer = Number(urlSearchParams.get("id"));
 
-
+let tableauLike = [];
 const arrayLikes = [];
 
 /*
@@ -353,35 +353,52 @@ function addLike(media){
 		if (idPhotographer === item.photographerId){ //cible le photographe
 			const tagNumberLike = document.getElementById(`${item.id}`);
 			
-			const idTagNumberLike = tagNumberLike.id;
+			//const idTagNumberLike = tagNumberLike.id;
 
 			const iconLike = document.getElementById(`like-${item.id}`); // les balises des coeurs
-			const idIconLike = iconLike.id.split("-"); //retourne une tableau autour du - le 2ème élément du tableau est l'id 
+			//const idIconLike = iconLike.id.split("-"); //retourne une tableau autour du - le 2ème élément du tableau est l'id 
 		
 			iconLike.addEventListener("click", () => {
 				
 				// Modifié la verification par If"dejaliké"
 
-				if(idIconLike[1] === idTagNumberLike){
+				if(!tableauLike.includes(item.id)  ){
 					tagNumberLike.innerHTML++; //ajoute au like du media
+					tableauLike.push(item.id);
 					
 					
-					// Devras changer le booleen en True
 
 
 					totalLikes++; //ajoute au total
 					//affiche le nouveau chiffre sur la page
 					tagTotalLike.innerHTML = Number(totalLikes);
+				}else{
+					console.log(item);
+					console.log(tableauLike);
+					tableauLike.splice(0,1);
+					tagNumberLike.innerHTML--; 
+					totalLikes--;
+					tagTotalLike.innerHTML = Number(totalLikes);
 				}
 			});
 			iconLike.addEventListener("keydown", e => {
-				if(idIconLike[1] === idTagNumberLike){
-					if(e.key === "Enter"){
-						tagNumberLike.innerHTML++; //ajoute au like du media
-						totalLikes++; //ajoute au total
-						//affiche le nouveau chiffre sur la page
-						tagTotalLike.innerHTML = Number(totalLikes);
-					}
+				if(!tableauLike.includes(item.id)  ){
+					tagNumberLike.innerHTML++; //ajoute au like du media
+					tableauLike.push(item.id);
+					
+					
+
+
+					totalLikes++; //ajoute au total
+					//affiche le nouveau chiffre sur la page
+					tagTotalLike.innerHTML = Number(totalLikes);
+				}else{
+					console.log(item);
+					console.log(tableauLike);
+					tableauLike.splice(0,1);
+					tagNumberLike.innerHTML--; 
+					totalLikes--;
+					tagTotalLike.innerHTML = Number(totalLikes);
 				}
 			});
 		}
