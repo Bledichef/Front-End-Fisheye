@@ -129,6 +129,8 @@ form input {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            width: 96%;
+            margin-top: 10px;
         }
         .lightbox {
             position: fixed;
