@@ -1,3 +1,6 @@
+/* eslint-disable no-undef */
+
+
 //Mettre le code JavaScript lié à la page photographer.html
 
 const urlPhotographer = window.location.search;
@@ -99,7 +102,7 @@ Cible la page du photographe sur laquelle on est grâce aux paramètres de l'url
 Appelle la factory methode -> si image créé balise image - si video créé balise video en appelant chaque fonction de la factory methode
 */
 function displayMediaPhotographers(media) {
-	for (item of media) {
+	for (const item of media) {
 		if (idPhotographer === item.photographerId) { // cible le photographe avec l'id dans l'url 
 			
 			const factoryModel = displayPictureVideoFactory(item); //appel de la factory qui créé toutes les balises sauf img et video
@@ -325,7 +328,7 @@ function cardLikesAndPrice(photographers, media) {
 		}
 	}
 
-	for(item of media) {
+	for(const item of media) {
 		if (idPhotographer === item.photographerId){ //cible le photographe
 			//récupère toutes les balises avec le nombre de likes
 			const tagNumberLike = document.getElementById(`${item.id}`);
@@ -349,7 +352,7 @@ si les 2 chiffres sont identiques -> permet de cibler et d'augmenter le bon chif
 function addLike(media){
 
 	const tagTotalLike = document.querySelector(".number-likes");
-	for (item of media) {
+	for (const item of media) {
 		
 		if (idPhotographer === item.photographerId){ //cible le photographe
 			
@@ -373,7 +376,7 @@ function addLike(media){
 					//affiche le nouveau chiffre sur la page
 					tagTotalLike.innerHTML = Number(totalLikes);
 				}else{
-					index = tableauLike.indexOf(eventId);
+					const index = tableauLike.indexOf(eventId);
 					tableauLike.splice(index,1);
 					tagNumberLike.innerHTML--; 
 					totalLikes--;
@@ -381,7 +384,7 @@ function addLike(media){
 					
 				}
 			});
-			iconLike.addEventListener("keydown", e => {
+			iconLike.addEventListener("keydown", () => {
 				if(!tableauLike.includes(item.id)  ){
 					tagNumberLike.innerHTML++; //ajoute au like du media
 					tableauLike.push(item.id);
