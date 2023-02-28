@@ -198,4 +198,13 @@ form input {
                 bottom: 0;
                 right: 57px;
             }
+            #select-sort{
+                    background: #901C1C;
+                    color: white;             
+            }
+            .media-container img {
+                border-radius: 5px;
+                
+            }
+        
     
