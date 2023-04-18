@@ -28,11 +28,27 @@
     <div class="sort">
       <div class="container-sort">
         <label for="select-sort" class="text-sort" aria-label="Order by">Trier par</label>
-        <select name="sort" id="select-sort">
-          <option value="popularity">Popularité</option>
-          <option value="date">Date</option>
-          <option value="title">Titre</option>
+        <select name="sort" id="select-sort" tabindex="0">
+          <option value="popularity" tabindex="0">Popularité</option>
+          <option value="date" tabindex="0">Date</option>
+          <option value="title" tabindex="0">Titre</option>
         </select>
+
+        <!-- <label id="listbox-label" for="listbox-container" class="text-sort" aria-label="Order by">Trier par
+          <div id="listbox-container" role="button" aria-haspopup="listbox" tabindex="0" aria-expanded="false">
+            <span id="listbox-current-option">Popularité</span>
+            <div role="listbox" id="listbox" tabindex="-1" aria-labelledby="listbox-label"
+              aria-activedescendant="listbox-popularity">
+              <div class="listbox-option" role="option" data-sort="popularity" tabindex="-1" id="listbox-popularity"
+                value="popularity">
+                Popularité</div>
+              <div class="listbox-option" role="option" data-sort="date" tabindex="-1" id="listbox-date" value="Date">
+                Date
+              </div>
+              <div class="listbox-option" role="option" data-sort="title" tabindex="-1" id="listbox-title"
+                value="Titre">
+                Titre</div> -->
+
       </div>
     </div>
     <div class="photograph-galery"></div>
